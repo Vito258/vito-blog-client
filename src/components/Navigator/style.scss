@@ -1,0 +1,34 @@
+$primary-color: #ffffff;
+$focus-bg-color: #0f2941;
+$focus-color: #4fc3f7;
+$hover-bg-color: rgba(255, 255, 255, 0.08);
+$text-color: rgba(255, 255, 255, 0.7);
+$item-category-box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+$item-category-py: 1.5;
+$item-category-px: 3;
+
+.item {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
+  color: $text-color;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: $hover-bg-color;
+  }
+
+  &:focus {
+    background-color: $focus-bg-color;
+    color: $focus-color;
+  }
+}
+
+.item-category {
+    box-shadow: $item-category-box-shadow;
+    padding-top: $item-category-py;
+    padding-bottom: $item-category-py;
+    padding-left: $item-category-px;
+    padding-right: $item-category-px;
+  }
