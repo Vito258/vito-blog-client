@@ -4,7 +4,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Navigator from "@/components/Navigator";
-import useLive2D from "@/hooks/useLive2D";
 import { Outlet } from "react-router-dom";
 import ReactLive2d from "react-live2d";
 import "./style.scss";

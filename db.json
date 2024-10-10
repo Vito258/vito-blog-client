@@ -1,1 +1,38 @@
-{}
+{
+  "getHomeTabs": [
+    {
+      "id": 1,
+      "label": "Home",
+      "disabled": false
+    },
+    { "id": 2, "label": "ChatRoom", "disabled": false },
+    {
+      "id": 3,
+      "label": "TechTalk",
+      "disabled": false
+    },
+    {
+      "id": 4,
+      "label": "ProjectShare",
+      "disabled": false
+    }
+  ],
+  "getTechtalkTabs": [
+    {
+      "id": "1",
+      "label": "C/C++",
+      "disabled": false
+    },
+    { "id": "2", "label": "C#", "disabled": false },
+    {
+      "id": "3",
+      "label": "Java",
+      "disabled": false
+    },
+    {
+      "id": "4",
+      "label": "前端",
+      "disabled": false
+    }
+  ]
+}
