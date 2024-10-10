@@ -19,7 +19,7 @@ const router = createBrowserRouter([
 		children:[
 			{
 				index:true,
-				path:'/home',
+				// path:'/home',
 				element:<Suspense fallback={"加载中..."}><Home/></Suspense>
 			},
 			{

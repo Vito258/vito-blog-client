@@ -1,39 +1,53 @@
 /*原神启动*/
 .splash-screen {
-    content: " ";
-    position: fixed;
-    inset: 0;
-    background-color: white;
-    z-index: 9999;
-    background-image: url(../../../public/assets/GenShin-Start.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 30%;
-    animation: fadeInBackground 3s;
-    animation-fill-mode: forwards;
-    pointer-events: none;
+  content: " ";
+  position: fixed;
+  inset: 0;
+  background-color: white;
+  z-index: 9999;
+  background-image: url(../../../public/assets/GenShin-Start.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30%;
+  animation: fadeInBackground 3s;
+  animation-fill-mode: forwards;
+  pointer-events: none;
 }
 
 @keyframes fadeInBackground {
-    0% {
-        background-image: none;
-        background-color: white;
-        opacity: 1;
-    }
-    25% {
-        background-color: white;
-        opacity: 1;
-    }
-    25.1% {
-        background-color: white;
-        opacity: 1;
-    }
-    50% {
-        background-color: white;
-        opacity: 1;
-    }
-    100% {
-        background-color: white;
-        opacity: 0;
-    }
+  0% {
+    background-image: none;
+    background-color: white;
+    opacity: 1;
+  }
+  25% {
+    background-color: white;
+    opacity: 1;
+  }
+  25.1% {
+    background-color: white;
+    opacity: 1;
+  }
+  50% {
+    background-color: white;
+    opacity: 1;
+  }
+  100% {
+    background-color: white;
+    opacity: 0;
+  }
+}
+.live2d-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  height: 50vh; 
+  width: 50vw; 
+  justify-content: left; 
+  align-items: center;
+}
+.live2d-canvas {
+  z-index: 20;
 }

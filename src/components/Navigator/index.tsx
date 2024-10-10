@@ -28,7 +28,7 @@ const categories = [
         icon: <DescriptionIcon /> ,
       },
       { id: "projectshare", name:'项目分享', icon: <CodeIcon /> },
-      { id: "notes", name:'随笔·杂谈', icon: <NoteAltIcon /> },
+      { id: "notes", name:'随笔', icon: <NoteAltIcon /> },
       { id: "chatroom", name:'聊天室', icon: <ChatBubbleOutlineIcon /> },
     ],
   },
@@ -79,7 +79,7 @@ export default function Navigator(props: DrawerProps) {
         </ListItem>
 
         {/* Home ListItem */}
-        <ListItemButton sx={{ ...item, ...itemCategory }} onClick={() => navigate('/home')}>
+        <ListItemButton sx={{ ...item, ...itemCategory }} onClick={() => navigate('/')}>
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>

@@ -4,11 +4,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Navigator from "@/components/Navigator";
-import "./style.scss";
+import useLive2D from "@/hooks/useLive2D";
 import { Outlet } from "react-router-dom";
-
-// 引入 Live2D 相关脚本
-// import "live2d-widget/js/L2Dwidget.min.js";
+import ReactLive2d from "react-live2d";
+import "./style.scss";
 
 let theme = createTheme({
   palette: {
@@ -163,37 +162,14 @@ export default function Layout() {
     setMobileOpen(!mobileOpen);
   };
 
-// 初始化 Live2D
-// React.useEffect(() => {
-//   L2Dwidget.init({
-//     selector: "#live2d-widget",
-//     model: {
-//       jsonPath: "/models/model.json", // 模型文件路径
-//     },
-//     display: {
-//       position: "right", // 位置
-//       width: 150, // 宽度
-//       height: 300, // 高度
-//       hOffset: 20, // 水平偏移
-//       vOffset: 20, // 垂直偏移
-//     },
-//     mobile: {
-//       show: true, // 是否在移动设备上显示
-//       scale: 0.5, // 移动设备上的缩放比例
-//     },
-//     react: {
-//       opacity: 0.7, // 透明度
-//     },
-//     log: false, // 是否记录日志
-//   });
-// }, []);
-
   return (
     <>
-    {/* 添加开屏动画 */}
-    <div id="splash-screen" className="splash-screen"></div>
-    {/* 添加 Live2D 容器 */}
-    <div id="live2d-widget"></div> 
+      {/* 添加开屏动画 */}
+      <div id="splash-screen" className="splash-screen"></div>
+      {/* 添加 Live2D 容器 */}
+      <div className="live2d-container">
+        <ReactLive2d className="live2d-canvas" width={300} height={400} left = {0} ModelList = {['Hiyori','mao_pro']}/>
+      </div>
       <ThemeProvider theme={theme}>
         <Box sx={{ display: "flex", minHeight: "100vh" }}>
           <CssBaseline />

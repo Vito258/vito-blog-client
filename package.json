@@ -18,6 +18,7 @@
     "@mui/material": "^6.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-live2d": "^1.0.31",
     "react-router-dom": "^6.26.2",
     "sass": "^1.79.4"
   },
