@@ -10,6 +10,7 @@ function TechTalk() {
     try {
       const data = await fetchTeactalkTabs();
       setTabs(data);
+      setFetchError(null)
     } catch (error) {
       console.error("Error fetching tabs:", error);
       setFetchError("无法加载数据，请稍后再试。");

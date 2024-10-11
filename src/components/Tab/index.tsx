@@ -12,7 +12,7 @@ interface Props {
 }
 
 const CustomTab: React.FC<Props> = ({ tabs }) => {
-  const [value, setValue] = React.useState(tabs.length > 0 ? 0 : -1);
+  const [value, setValue] = React.useState(0);
 
   const handleChange = React.useCallback(
     (event: React.SyntheticEvent, newValue: number) => {
@@ -23,11 +23,6 @@ const CustomTab: React.FC<Props> = ({ tabs }) => {
       setValue(newValue);
     },
     []
-  );
-
-  const enabledTabs = React.useMemo(
-    () => tabs.filter((tab) => !tab.disabled),
-    [tabs]
   );
 
   if (tabs.length === 0) {
@@ -43,7 +38,7 @@ const CustomTab: React.FC<Props> = ({ tabs }) => {
         onChange={handleChange}
         aria-label="disabled tabs example"
       >
-        {enabledTabs.map((tab) => (
+        {tabs.map((tab) => (
           <Tab key={tab.id} label={tab.label} disabled={tab.disabled} />
         ))}
       </Tabs>
