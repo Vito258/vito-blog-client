@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import CustomTab, { TabProp } from "@/components/Tab";
+import CunstomCard from "@/components/Card";
 import { fetchTeactalkTabs } from "@/api/api"; // 导入 API 请求函数
+import "./style.scss"
 
 function TechTalk() {
   const [tabs, setTabs] = useState<TabProp[]>([]);
@@ -32,6 +34,9 @@ function TechTalk() {
   return (
     <div>
       <CustomTab tabs={tabs} />
+      <div className="card-container">
+         <CunstomCard></CunstomCard>
+      </div>
     </div>
   );
 }

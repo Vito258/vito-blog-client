@@ -13,16 +13,22 @@ interface Props {
 
 const CustomTab: React.FC<Props> = ({ tabs }) => {
   const [value, setValue] = React.useState(0);
-
+ 
+  // 将tabs.length加入依赖项，确保每次 tabs 数组变化时重新创建 handleChange 函数。
   const handleChange = React.useCallback(
     (event: React.SyntheticEvent, newValue: number) => {
+      if (tabs.length === 0) {
+        console.warn("No tabs available");
+        return;
+      }
+
       if (newValue >= tabs.length || newValue < 0) {
         console.warn("Invalid tab index:", newValue);
         return;
       }
       setValue(newValue);
     },
-    []
+    [tabs.length]
   );
 
   if (tabs.length === 0) {

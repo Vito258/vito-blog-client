@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { TabProp } from '../components/Tab';
 
 const apiClient = axios.create({
   baseURL: '/api', // 代理前缀
@@ -18,7 +19,7 @@ export const fetchUsers = async (): Promise<any> => {
   }
 };
 
-export const fetchTeactalkTabs = async (): Promise<any> => {
+export const fetchTeactalkTabs = async (): Promise<TabProp[]> => {
   try {
     const response = await apiClient.get("/getTechtalkTabs");
     return response.data;
