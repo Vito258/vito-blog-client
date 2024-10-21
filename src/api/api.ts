@@ -29,6 +29,16 @@ export const fetchTeactalkTabs = async (): Promise<TabProp[]> => {
   }
 };
 
+export const fetchTeactalkAllArticles = async (): Promise<TabProp[]> => {
+  try {
+    const response = await apiClient.get("/getTechtalkAllArticles");
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching TechtalkAllArticles:', error);
+    throw error;
+  }
+};
+
 // POST 请求
 export const createUser = async (userData: any): Promise<any> => {
   try {

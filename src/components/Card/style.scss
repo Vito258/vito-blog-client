@@ -1,7 +1,24 @@
-.custom-card{
-   display: flex;
+.custom-card {
+  position: relative;
+  display: flex;
+  margin-right: 150px;
+  margin-bottom: 30px;
+
+  transition: transform 0.2s, box-shadow 0.2s !important; // 添加过渡效果
+  &:hover {
+    transition: transform .2s, box-shadow .2s !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .1), -4px -4px 8px rgba(0, 0, 0, .1) !important;
+  }
 }
-.card-media{
-    width: 30%;
-    height: 150px;
+.custom-card .card-media {
+  width: 30%;
+  height: 150px;
+}
+.custom-card .card-date {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 14px;
+  color: #666;
 }
