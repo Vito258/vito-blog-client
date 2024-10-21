@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import CustomTab, { TabProp } from "@/components/Tab";
 import CunstomCard from "@/components/Card";
-import {fetchTeactalkAllArticles, fetchTeactalkTabs } from "@/api/api"; // 导入 API 请求函数
+import {fetchTeactalkArticleByType, fetchTeactalkTabs } from "@/api/api"; // 导入 API 请求函数
 import "./style.scss"
 
 function TechTalk() {
   const [tabs, setTabs] = useState<TabProp[]>([]);
+  const [articleType, setArticleType] = useState<number>(1);
   const [allArticles,setAllArticles] = useState<any>([])
   const [fetchError, setFetchError] = useState<string | null>(null);
 
   const fetchData = async () => {
     try {
-      const data = await fetchTeactalkTabs();
-      const allArticlesData = await fetchTeactalkAllArticles();
-      setTabs(data);
-      setAllArticles(allArticlesData)
+      const tabsData = await fetchTeactalkTabs();
+      const articlesData = await fetchTeactalkArticleByType(articleType);
+      setTabs(tabsData);
+      setAllArticles(articlesData)
       setFetchError(null)
     } catch (error) {
       console.error("Error fetching tabs:", error);
@@ -24,6 +25,10 @@ function TechTalk() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() =>{
+    fetchTeactalkArticleByType(articleType).then(data=>setAllArticles(data))
+  },[articleType])
 
   if (fetchError) {
     return (
@@ -36,7 +41,7 @@ function TechTalk() {
 
   return (
     <div>
-      <CustomTab tabs={tabs} />
+      <CustomTab tabs={tabs} onTabChange={(index: number) => setArticleType(tabs[index].id) }/>
       <div className="card-container">
         {allArticles.map((article: any) => (
            <CunstomCard title={article.title} imgUrl={article.imgUrl} content={article.content} date={article.date}></CunstomCard>

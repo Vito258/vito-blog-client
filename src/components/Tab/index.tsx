@@ -1,17 +1,19 @@
 import React from "react";
 import { Paper, Tabs, Tab } from "@mui/material";
+import { on } from "events";
 
 export interface TabProp {
-  id: string;
+  id: number;
   label: string;
   disabled: boolean;
 }
 
 interface Props {
   tabs: TabProp[];
+  onTabChange: (index: number) => void;
 }
 
-const CustomTab: React.FC<Props> = ({ tabs }) => {
+const CustomTab: React.FC<Props> = ({ tabs,onTabChange }) => {
   const [value, setValue] = React.useState(0);
  
   // 将tabs.length加入依赖项，确保每次 tabs 数组变化时重新创建 handleChange 函数。
@@ -27,6 +29,7 @@ const CustomTab: React.FC<Props> = ({ tabs }) => {
         return;
       }
       setValue(newValue);
+      onTabChange(newValue);
     },
     [tabs.length]
   );

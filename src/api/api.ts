@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Article } from '@/type';
 import { TabProp } from '../components/Tab';
 
 const apiClient = axios.create({
@@ -29,9 +30,19 @@ export const fetchTeactalkTabs = async (): Promise<TabProp[]> => {
   }
 };
 
-export const fetchTeactalkAllArticles = async (): Promise<TabProp[]> => {
+export const fetchTeactalkAllArticles = async (): Promise<Article[]> => {
   try {
-    const response = await apiClient.get("/getTechtalkAllArticles");
+    const response = await apiClient.get("/getTechtalkArticles");
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching TechtalkAllArticles:', error);
+    throw error;
+  }
+};
+
+export const fetchTeactalkArticleByType = async (type:number): Promise<Article[]> => {
+  try {
+    const response = await apiClient.get(`/getTechtalkArticles?type=${type}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching TechtalkAllArticles:', error);

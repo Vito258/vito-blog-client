@@ -19,26 +19,26 @@
   ],
   "getTechtalkTabs": [
     {
-      "id": "1",
+      "id": 1,
       "label": "C/C++",
       "disabled": false
     },
     { "id": "2", "label": "C#", "disabled": false },
     {
-      "id": "3",
+      "id": 3,
       "label": "Java",
       "disabled": false
     },
     {
-      "id": "4",
+      "id": 4,
       "label": "前端",
       "disabled": false
     }
   ],
-  "getTechtalkAllArticles":[
+  "getTechtalkArticles":[
      {
-      "id":"1",
-      "type":"1",
+      "id":1,
+      "type":1,
       "title":"C/C++ 测试文章1",
       "content":"年底写东西常常词穷，大脑短路，语言干涩，今天就推荐50个宝藏标题，比如：工作写“人类命运共同体”，它的标题是《大道不孤，天下一家》；写“平凡与平庸的关系”，它的标题是《平凡不平庸，无名也有痕》。高级又文雅，睿智又情真，简直是标题界的天花板，大家赶紧收藏学起来吧",
       "imgUrl":"https://haowallpaper.com/link/common/file/previewFileImg/15556743616106816",
@@ -49,8 +49,8 @@
       "readNum":"3"
      },
      {
-      "id":"2",
-      "type":"1",
+      "id":2,
+      "type":1,
       "title":"C/C++ 测试文章2",
       "content":"年底写东西常常词穷，大脑短路，语言干涩，今天就推荐50个宝藏标题，比如：工作写“人类命运共同体”，它的标题是《大道不孤，天下一家》；写“平凡与平庸的关系”，它的标题是《平凡不平庸，无名也有痕》。高级又文雅，睿智又情真，简直是标题界的天花板，大家赶紧收藏学起来吧",
       "imgUrl":"https://haowallpaper.com/link/common/file/getCroppingImg/15691089397322048",
@@ -61,8 +61,8 @@
       "readNum":"3"
      },
      {
-      "id":"3",
-      "type":"2",
+      "id":3,
+      "type":2,
       "title":"C# 测试文章1",
       "content":"年底写东西常常词穷，大脑短路，语言干涩，今天就推荐50个宝藏标题，比如：工作写“人类命运共同体”，它的标题是《大道不孤，天下一家》；写“平凡与平庸的关系”，它的标题是《平凡不平庸，无名也有痕》。高级又文雅，睿智又情真，简直是标题界的天花板，大家赶紧收藏学起来吧",
       "imgUrl":"https://haowallpaper.com/link/common/file/getCroppingImg/15430251672539456",
@@ -73,8 +73,8 @@
       "readNum":"3"
      },
      {
-      "id":"4",
-      "type":"2",
+      "id":4,
+      "type":2,
       "title":"C# 测试文章2",
       "content":"年底写东西常常词穷，大脑短路，语言干涩，今天就推荐50个宝藏标题，比如：工作写“人类命运共同体”，它的标题是《大道不孤，天下一家》；写“平凡与平庸的关系”，它的标题是《平凡不平庸，无名也有痕》。高级又文雅，睿智又情真，简直是标题界的天花板，大家赶紧收藏学起来吧",
       "imgUrl":"https://haowallpaper.com/link/common/file/getCroppingImg/786d50481e9c29b09d0ced4c83ca67f0786d50481e9c29b09d0ced4c83ca67f0",
@@ -85,8 +85,8 @@
       "readNum":"3"
      },
      {
-      "id":"5",
-      "type":"3",
+      "id":5,
+      "type":3,
       "title":"Java 测试文章1",
       "content":"年底写东西常常词穷，大脑短路，语言干涩，今天就推荐50个宝藏标题，比如：工作写“人类命运共同体”，它的标题是《大道不孤，天下一家》；写“平凡与平庸的关系”，它的标题是《平凡不平庸，无名也有痕》。高级又文雅，睿智又情真，简直是标题界的天花板，大家赶紧收藏学起来吧",
       "imgUrl":"https://haowallpaper.com/link/common/file/getCroppingImg/15691097845895488",
@@ -97,8 +97,8 @@
       "readNum":"3"
      },
      {
-      "id":"6",
-      "type":"3",
+      "id":6,
+      "type":3,
       "title":"Java 测试文章2",
       "content":"年底写东西常常词穷，大脑短路，语言干涩，今天就推荐50个宝藏标题，比如：工作写“人类命运共同体”，它的标题是《大道不孤，天下一家》；写“平凡与平庸的关系”，它的标题是《平凡不平庸，无名也有痕》。高级又文雅，睿智又情真，简直是标题界的天花板，大家赶紧收藏学起来吧",
       "imgUrl":"https://haowallpaper.com/link/common/file/getCroppingImg/15500236980785472",
@@ -109,8 +109,8 @@
       "readNum":"3"
      },
      {
-      "id":"7",
-      "type":"4",
+      "id":7,
+      "type":4,
       "title":"前端 测试文章1",
       "content":"年底写东西常常词穷，大脑短路，语言干涩，今天就推荐50个宝藏标题，比如：工作写“人类命运共同体”，它的标题是《大道不孤，天下一家》；写“平凡与平庸的关系”，它的标题是《平凡不平庸，无名也有痕》。高级又文雅，睿智又情真，简直是标题界的天花板，大家赶紧收藏学起来吧",
       "imgUrl":"https://haowallpaper.com/link/common/file/getCroppingImg/15691092177686848",
@@ -121,8 +121,8 @@
       "readNum":"3"
      },
      {
-      "id":"8",
-      "type":"4",
+      "id":8,
+      "type":4,
       "title":"前端 测试文章2",
       "content":"年底写东西常常词穷，大脑短路，语言干涩，今天就推荐50个宝藏标题，比如：工作写“人类命运共同体”，它的标题是《大道不孤，天下一家》；写“平凡与平庸的关系”，它的标题是《平凡不平庸，无名也有痕》。高级又文雅，睿智又情真，简直是标题界的天花板，大家赶紧收藏学起来吧",
       "imgUrl":"https://haowallpaper.com/link/common/file/getCroppingImg/15053616164736320",
