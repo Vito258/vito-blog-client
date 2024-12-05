@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import CustomTab, { TabProp } from "@/components/Tab";
 import CunstomCard from "@/components/Card";
-import {fetchTeactalkArticleByType, fetchTeactalkTabs } from "@/api/api"; // 导入 API 请求函数
-import "./style.scss"
+import { fetchTeactalkArticleByType, fetchTeactalkTabs } from "@/api/api"; // 导入 API 请求函数
+import "./style.scss";
+import { Article } from "@/type";
+import Box from "@mui/material/Box";
 
 function TechTalk() {
   const [tabs, setTabs] = useState<TabProp[]>([]);
   const [articleType, setArticleType] = useState<number>(1);
-  const [allArticles,setAllArticles] = useState<any>([])
+  const [allArticles, setAllArticles] = useState<Article[]>([]);
   const [fetchError, setFetchError] = useState<string | null>(null);
 
   const fetchData = async () => {
     try {
       const tabsData = await fetchTeactalkTabs();
       const articlesData = await fetchTeactalkArticleByType(articleType);
-      setTabs(tabsData);
-      setAllArticles(articlesData)
-      setFetchError(null)
+      setTabs(tabsData.data.articleTypes);
+      setAllArticles(articlesData.data.articles);
+      setFetchError(null);
     } catch (error) {
       console.error("Error fetching tabs:", error);
       setFetchError("无法加载数据，请稍后再试。");
@@ -26,9 +28,11 @@ function TechTalk() {
     fetchData();
   }, []);
 
-  useEffect(() =>{
-    fetchTeactalkArticleByType(articleType).then(data=>setAllArticles(data))
-  },[articleType])
+  useEffect(() => {
+    fetchTeactalkArticleByType(articleType).then((data) =>
+      setAllArticles(data.data.articles)
+    );
+  }, [articleType]);
 
   if (fetchError) {
     return (
@@ -41,12 +45,22 @@ function TechTalk() {
 
   return (
     <div>
-      <CustomTab tabs={tabs} onTabChange={(index: number) => setArticleType(tabs[index].id) }/>
-      <div className="card-container">
-        {allArticles.map((article: any) => (
-           <CunstomCard title={article.title} imgUrl={article.imgUrl} content={article.content} date={article.date}></CunstomCard>
-        ))}
-      </div>
+      <CustomTab
+        tabs={tabs}
+        onTabChange={(index: number) => setArticleType(tabs[index].id)}
+      />
+      <Box className="card-container">
+        {allArticles &&
+          allArticles.length > 0 &&
+          allArticles.map((article: Article) => (
+            <CunstomCard
+              title={article.title}
+              imgUrl={article.coverImgUrl}
+              content={article.content}
+              date={article.createDate}
+            ></CunstomCard>
+          ))}
+      </Box>
     </div>
   );
 }
