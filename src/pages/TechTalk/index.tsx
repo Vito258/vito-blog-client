@@ -55,7 +55,7 @@ function TechTalk() {
           allArticles.map((article: Article) => (
             <CunstomCard
               title={article.title}
-              imgUrl={article.coverImgUrl}
+              imgUrl={article.coverImageUrl}
               content={article.content}
               date={article.createDate}
             ></CunstomCard>

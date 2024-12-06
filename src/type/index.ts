@@ -9,7 +9,7 @@ export interface ReSponse {
 export interface Article {
   title: string;
   content: string;
-  coverImgUrl: string;
-  createDate: string;
-  updateDate: string;
+  coverImageUrl: string;
+  createdDate: string;
+  updatedDate: string;
 }
