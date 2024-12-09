@@ -12,14 +12,15 @@ export default defineConfig({
   },
   define: {
     "process.env.PUBLIC_URL": JSON.stringify(process.env.PUBLIC_URL || "/"),
+    global: "window",
   },
   server: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:8080', // 后端服务器地址
+      "/api": {
+        target: "http://localhost:8080", // 后端服务器地址
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
-  }
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
 });

@@ -1,0 +1,10 @@
+.RichTextEditor {
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 200px;
+  border-radius: 4px;
+}
+
+.RichTextEditor:focus-within {
+  border-color: #6200ea;
+}

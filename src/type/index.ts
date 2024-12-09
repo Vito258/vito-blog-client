@@ -7,6 +7,7 @@ export interface ReSponse {
 
 // 文章类型
 export interface Article {
+  id: number;
   title: string;
   content: string;
   coverImageUrl: string;
