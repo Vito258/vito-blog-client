@@ -13,3 +13,9 @@ export interface Article {
   createdDate: string;
   updatedDate: string;
 }
+
+// 日期的格式化类型
+export enum DateFormatType {
+  YYYY_MM_DD = "YYYY-MM-DD",
+  YYYY_MM_DD_HH_mm_ss = "YYYY-MM-DD HH:mm",
+}

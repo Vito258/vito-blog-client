@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import CustomTab, { TabProp } from "@/components/Tab";
 import CunstomCard from "@/components/Card";
 import { fetchTeactalkArticleByType, fetchTeactalkTabs } from "@/api/api"; // 导入 API 请求函数
-import "./style.scss";
-import { Article } from "@/type";
+import dayjs from "dayjs";
+import { Article, DateFormatType } from "@/type";
 import Box from "@mui/material/Box";
-
+import "./style.scss";
 function TechTalk() {
   const [tabs, setTabs] = useState<TabProp[]>([]);
   const [articleType, setArticleType] = useState<number>(1);
@@ -57,7 +57,9 @@ function TechTalk() {
               title={article.title}
               imgUrl={article.coverImageUrl}
               content={article.content}
-              date={article.createDate}
+              date={dayjs(article.updatedDate).format(
+                DateFormatType.YYYY_MM_DD
+              )}
             ></CunstomCard>
           ))}
       </Box>
