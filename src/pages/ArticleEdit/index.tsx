@@ -1,7 +1,7 @@
 import RichTextEditor from "@/components/RichTextEditor";
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import { TextField, Card, Button } from "@mui/material";
+import { TextField, Card, Button, Typography } from "@mui/material";
 import "./style.scss";
 
 function ArticleEdit() {
@@ -21,18 +21,24 @@ function ArticleEdit() {
 
   return (
     <Box>
-      <Card className="article-edit-card">
-        <h1>Edit Article</h1>
-        <TextField
-          type="text"
-          value={article.title}
-          onChange={handleTitleChange}
-          placeholder="Enter article title"
-          sx={{ marginBottom: "20px" }}
-          className="article-edit-title-input"
-        />
+      <Box className="article-edit-card">
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <TextField
+            type="text"
+            value={article.title}
+            onChange={handleTitleChange}
+            placeholder="请输入文章标题"
+            sx={{
+              marginBottom: "20px",
+              "&:hover": {
+                borderColor: "#009AD6",
+              },
+            }}
+            className="article-edit-title-input"
+          />
+        </Box>
         <br />
-        <RichTextEditor />
+        <RichTextEditor content={article.content} />
         <Button
           onClick={handleSubmit}
           className="article-edit-submit-button"
@@ -50,7 +56,7 @@ function ArticleEdit() {
         >
           保存文章
         </Button>
-      </Card>
+      </Box>
     </Box>
   );
 }

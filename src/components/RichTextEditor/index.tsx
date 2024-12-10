@@ -8,23 +8,21 @@ import { Editor, Toolbar } from "@wangeditor/editor-for-react";
 import { IDomEditor, IEditorConfig, IToolbarConfig } from "@wangeditor/editor";
 import "./style.scss";
 
+interface RichTextEditorProps {
+  content: string;
+}
+
 /**
  * 富文本编辑器组件
+ * @param content 文本内容,通常是html 文本
  * @returns
  */
-function RichTextEditor() {
+function RichTextEditor({ content }: RichTextEditorProps) {
   // editor 实例
   const [editor, setEditor] = useState<IDomEditor | null>(null);
 
   // 编辑器内容
-  const [html, setHtml] = useState("<p>hello</p>");
-
-  // 模拟 ajax 请求，异步设置 html
-  useEffect(() => {
-    setTimeout(() => {
-      setHtml("<p>hello world</p>");
-    }, 1500);
-  }, []);
+  const [html, setHtml] = useState(content || undefined);
 
   // 工具栏配置
   const toolbarConfig: Partial<IToolbarConfig> = {};
@@ -34,7 +32,7 @@ function RichTextEditor() {
     placeholder: "请输入内容...",
   };
 
-  // 及时销毁 editor ，重要！
+  // 及时销毁 editor
   useEffect(() => {
     return () => {
       if (editor == null) return;
@@ -57,7 +55,7 @@ function RichTextEditor() {
         onCreated={setEditor}
         onChange={(editor) => setHtml(editor.getHtml())}
         mode="default"
-        style={{ height: "500px", overflowY: "hidden" }}
+        style={{ minHeight: "500px", overflowY: "hidden" }}
       />
     </Box>
   );
