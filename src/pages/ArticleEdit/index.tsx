@@ -1,21 +1,11 @@
 import RichTextEditor from "@/components/RichTextEditor";
 import { useState } from "react";
-import { convertToRaw, EditorState } from "draft-js";
 import Box from "@mui/material/Box";
 import { TextField, Card, Button } from "@mui/material";
-import "./style.scss"
+import "./style.scss";
 
 function ArticleEdit() {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [article, setArticle] = useState({ title: "", content: "" });
-
-  const handleEditorChange = (newEditorState: EditorState) => {
-    setEditorState(newEditorState);
-    setArticle((prevArticle) => ({
-      ...prevArticle,
-      content: JSON.stringify(convertToRaw(newEditorState.getCurrentContent())),
-    }));
-  };
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setArticle((prevArticle) => ({
@@ -42,18 +32,18 @@ function ArticleEdit() {
           className="article-edit-title-input"
         />
         <br />
-        <RichTextEditor editorState={editorState} onEditorChange={handleEditorChange} />
+        <RichTextEditor />
         <Button
           onClick={handleSubmit}
           className="article-edit-submit-button"
           sx={{
-            '&.article-edit-submit-button': {
+            "&.article-edit-submit-button": {
               marginTop: "10px",
               padding: "10px 20px",
               backgroundColor: "skyblue",
               color: "white",
-              '&:hover': {
-                backgroundColor: '#009AD6',
+              "&:hover": {
+                backgroundColor: "#009AD6",
               },
             },
           }}
