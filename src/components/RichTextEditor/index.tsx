@@ -10,6 +10,7 @@ import "./style.scss";
 
 interface RichTextEditorProps {
   content: string;
+  onChange: (content: string) => void;
 }
 
 /**
@@ -17,7 +18,7 @@ interface RichTextEditorProps {
  * @param content 文本内容,通常是html 文本
  * @returns
  */
-function RichTextEditor({ content }: RichTextEditorProps) {
+function RichTextEditor({ content, onChange }: RichTextEditorProps) {
   // editor 实例
   const [editor, setEditor] = useState<IDomEditor | null>(null);
 
@@ -53,7 +54,10 @@ function RichTextEditor({ content }: RichTextEditorProps) {
         defaultConfig={editorConfig}
         value={html}
         onCreated={setEditor}
-        onChange={(editor) => setHtml(editor.getHtml())}
+        onChange={(editor) => {
+          setHtml(editor.getHtml());
+          onChange(editor.getHtml());
+        }}
         mode="default"
         style={{ minHeight: "500px", overflowY: "hidden" }}
       />

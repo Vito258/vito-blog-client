@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CustomTab, { TabProp } from "@/components/Tab";
 import CunstomCard from "@/components/Card";
-import { fetchTeactalkArticleByType, fetchTeactalkTabs } from "@/api/api"; // 导入 API 请求函数
+import { fetchTeactalkArticleByType, fetchTeacArticleTypes } from "@/api/api"; // 导入 API 请求函数
 import dayjs from "dayjs";
 import { Article, DateFormatType } from "@/type";
 import Box from "@mui/material/Box";
@@ -14,7 +14,7 @@ function TechTalk() {
 
   const fetchData = async () => {
     try {
-      const tabsData = await fetchTeactalkTabs();
+      const tabsData = await fetchTeacArticleTypes();
       const articlesData = await fetchTeactalkArticleByType(articleType);
       setTabs(tabsData.data.articleTypes);
       setAllArticles(articlesData.data.articles);
@@ -55,7 +55,7 @@ function TechTalk() {
           allArticles.map((article: Article) => (
             <CunstomCard
               title={article.title}
-              imgUrl={article.coverImageUrl}
+              imgUrl={article.coverImageUrl || ""}
               content={article.content}
               date={dayjs(article.updatedDate).format(
                 DateFormatType.YYYY_MM_DD

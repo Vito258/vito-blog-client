@@ -20,7 +20,7 @@ export const fetchUsers = async (): Promise<ReSponse> => {
   }
 };
 
-export const fetchTeactalkTabs = async (): Promise<ReSponse> => {
+export const fetchTeacArticleTypes = async (): Promise<ReSponse> => {
   try {
     const response = await apiClient.get(
       "/techArticleTypes/getTechArticleTypeList"
@@ -63,6 +63,19 @@ export const createUser = async (userData: any): Promise<ReSponse> => {
     return response.data;
   } catch (error) {
     console.error("Error creating user:", error);
+    throw error;
+  }
+};
+
+export const saveTechArticle = async (article: Article): Promise<ReSponse> => {
+  try {
+    const response = await apiClient.post(
+      "/techArticles/saveTechArticle",
+      article
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error saving article:", error);
     throw error;
   }
 };

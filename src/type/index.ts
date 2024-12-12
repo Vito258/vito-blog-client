@@ -5,14 +5,21 @@ export interface ReSponse {
   msg: string;
 }
 
-// 文章类型
+// 文章
 export interface Article {
-  id: number;
+  id?: number;
+  typeId?: number;
   title: string;
   content: string;
-  coverImageUrl: string;
-  createdDate: string;
-  updatedDate: string;
+  coverImageUrl?: string;
+  createdDate?: string;
+  updatedDate?: string;
+}
+
+// 文章类型
+export interface ArticleType {
+  id?: number;
+  typeName: string;
 }
 
 // 日期的格式化类型

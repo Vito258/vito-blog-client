@@ -164,10 +164,10 @@ export default function Layout() {
   return (
     <>
       {/* 添加开屏动画 */}
-      <div id="splash-screen" className="splash-screen"></div>
+      {/* <div id="splash-screen" className="splash-screen"></div> */}
       {/* 添加 Live2D 容器 */}
       <div className="live2d-container">
-        <ReactLive2d className="live2d-canvas" width={300} height={400} left = {0} ModelList = {['Hiyori','mao_pro']}/>
+        {/* <ReactLive2d className="live2d-canvas" width={300} height={400} left = {0} ModelList = {['Hiyori','mao_pro']}/> */}
       </div>
       <ThemeProvider theme={theme}>
         <Box sx={{ display: "flex", minHeight: "100vh" }}>
