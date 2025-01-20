@@ -12,6 +12,7 @@ import {
 import { saveTechArticle, fetchTeacArticleTypes } from "@/api/api";
 import "./style.scss";
 import { Article, ArticleType } from "@/type";
+import ImgUrlParser from "@/components/ImgUrlParser";
 
 function ArticleEdit() {
   const [article, setArticle] = useState<Article>({ title: "", content: "" });
@@ -30,7 +31,7 @@ function ArticleEdit() {
   };
 
   const handleSubmit = () => {
-    // 这里可以添加保存逻辑
+    // 添加保存逻辑
     saveTechArticle(article).then((res) => {
       console.log(res);
     });
@@ -43,10 +44,17 @@ function ArticleEdit() {
     }));
   };
 
+  const handleImgUrlChange = (imgUrl: string) => {
+    setArticle((prevArticle) => ({
+      ...prevArticle,
+      coverImageUrl: imgUrl,
+    }));
+  };
+
   return (
     <Box>
       <Box className="article-edit-card">
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Box className="article-edit-component-container">
           <TextField
             type="text"
             value={article.title}
@@ -54,6 +62,8 @@ function ArticleEdit() {
             placeholder="请输入文章标题"
             className="article-edit-title-input"
             sx={{
+              maxWidth: "500px",
+              minWidth: "300px",
               marginBottom: "20px",
               "&:hover": {
                 borderColor: "#009AD6",
@@ -61,8 +71,13 @@ function ArticleEdit() {
             }}
           />
         </Box>
-        <br />
-        <Box sx={{ width: "50%" }}>
+        <Box className="article-edit-component-container">
+          <ImgUrlParser
+            imgUrl={article.coverImageUrl}
+            onChange={handleImgUrlChange}
+          />
+        </Box>
+        <Box className="article-edit-component-container">
           {" "}
           <FormControl sx={{ width: "100%" }}>
             <InputLabel id="typeId-select-label">文章类型</InputLabel>
@@ -72,7 +87,9 @@ function ArticleEdit() {
               defaultValue={article.typeId}
               label="文章类型"
               placeholder="请选择文章类型"
-              sx={{ width: "100%" }}
+              sx={{
+                width: "200px",
+              }}
             >
               {articleTypeList &&
                 articleTypeList.length > 0 &&
@@ -84,8 +101,6 @@ function ArticleEdit() {
             </Select>
           </FormControl>
         </Box>
-
-        <br />
         <RichTextEditor
           content={article.content}
           onChange={handleContentChange}

@@ -26,7 +26,7 @@ const CustomCard: React.FC<CustomCardProps> = ({
         <CardMedia
           className="card-media"
           component="img"
-          alt="green iguana"
+          alt="no image"
           image={imgUrl}
         />
         <CardContent>
