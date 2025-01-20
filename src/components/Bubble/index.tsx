@@ -2,10 +2,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  getRandomLightColor,
   getRandomFontSize,
-  getRandomFontColor,
+  getRandomColorPair,
 } from "@/utils/BubbleUtil";
+import "./style.scss";
 
 interface BubbleProps {
   content: string;
@@ -16,8 +16,7 @@ interface BubbleProps {
 const Bubble: React.FC<BubbleProps> = ({ content, position, index }) => {
   const fontSize = getRandomFontSize();
   const bubbleSize = fontSize * 10; // 根据字体大小调整气泡大小
-  const backgroundColor = getRandomLightColor();
-  const fontColor = getRandomFontColor();
+  const colorPair = getRandomColorPair();
 
   return (
     <motion.div
@@ -32,14 +31,21 @@ const Bubble: React.FC<BubbleProps> = ({ content, position, index }) => {
         position: "absolute",
         width: bubbleSize,
         height: bubbleSize,
-        backgroundColor: backgroundColor,
+        backgroundColor: colorPair.background,
+        color: colorPair.text,
         fontSize: `${fontSize}px`,
-        color: fontColor,
         zIndex: index, // 控制气泡的堆叠顺序
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: '50%',
+        padding: '10px',
+        textAlign: 'center',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)', // 添加轻微阴影提升可读性
       }}
     >
       <div className="bubble-content">
-        <p>{content}</p>
+        <p style={{ margin: 0, wordBreak: 'break-word' }}>{content}</p>
       </div>
     </motion.div>
   );

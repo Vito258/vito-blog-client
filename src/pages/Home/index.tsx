@@ -16,20 +16,32 @@ function Home() {
     "气泡8: 联系方式",
   ];
 
-  const minDistance = 100; // 设置最小距离
+  const minDistance = 150; // 减小最小距离
   const bubblePositions = calculateBubblePositions(bubbleContents.length, minDistance);
-
+  
+  // 计算所有气泡位置的中心点
+  const centerX = bubblePositions.reduce((sum, pos) => sum + pos.x, 0) / bubblePositions.length;
+  const centerY = bubblePositions.reduce((sum, pos) => sum + pos.y, 0) / bubblePositions.length;
+  
   return (
     <div className="home-container">
       <motion.div
         className="center-bubble"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, scale: 0.5, x: centerX, y: centerY }}
+        animate={{ opacity: 1, scale: 1, x: centerX, y: centerY }}
         transition={{ duration: 1, ease: "easeInOut" }}
         whileHover={{ scale: 1.1 }}
         drag
-        dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-        style={{ zIndex: 1000 }} // 确保中心气泡始终在最上层
+        dragConstraints={{
+          top: centerY - 100,
+          left: centerX - 100,
+          right: centerX + 100,
+          bottom: centerY + 100
+        }}
+        style={{ 
+          position: 'absolute',
+          transform: 'translate(-50%, -50%)'
+        }}
       >
         <h1>欢迎来到我的博客</h1>
         <p>这里是关于技术、生活和一切有趣的分享。</p>
@@ -39,7 +51,7 @@ function Home() {
           <Bubble
             key={index}
             content={content}
-            position={{ x: bubblePositions[index].x ?? 0, y: bubblePositions[index].y ?? 0 }}
+            position={{ x: bubblePositions[index].x, y: bubblePositions[index].y }}
             index={index}
           />
         ))}
