@@ -21,6 +21,7 @@
     "axios": "^1.7.7",
     "babel-polyfill": "^6.26.0",
     "dayjs": "^1.11.13",
+    "framer-motion": "^11.18.1",
     "immutable": "^5.0.3",
     "json-server": "^1.0.0-beta.3",
     "react": "^18.3.1",

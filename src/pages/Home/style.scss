@@ -1,7 +1,45 @@
+// src/pages/Home/style.scss
 .home-container {
-    display: flex;
-    align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  position: relative;
 }
-.home-container .home-carousel{
-    width: 400px;
+
+.center-bubble {
+  width: 200px; /* 调整中心气泡大小 */
+  height: 200px; /* 调整中心气泡大小 */
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+}
+
+.bubble-container {
+  position: relative;
+  width: 400px; /* 调整容器大小 */
+  height: 400px; /* 调整容器大小 */
+}
+
+.bubble {
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bubble-content {
+  text-align: center;
+  white-space: nowrap; /* 防止文字换行 */
+  overflow: hidden; /* 隐藏溢出的文字 */
+  text-overflow: ellipsis; /* 显示省略号 */
 }
