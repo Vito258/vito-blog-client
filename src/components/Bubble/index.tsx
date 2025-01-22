@@ -1,10 +1,7 @@
 // src/components/Bubble/index.tsx
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  getRandomFontSize,
-  getRandomColorPair,
-} from "@/utils/BubbleUtil";
+import { getRandomFontSize, getRandomColorPair } from "@/utils";
 import "./style.scss";
 
 interface BubbleProps {
@@ -35,17 +32,17 @@ const Bubble: React.FC<BubbleProps> = ({ content, position, index }) => {
         color: colorPair.text,
         fontSize: `${fontSize}px`,
         zIndex: index, // 控制气泡的堆叠顺序
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '50%',
-        padding: '10px',
-        textAlign: 'center',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)', // 添加轻微阴影提升可读性
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: "50%",
+        padding: "10px",
+        textAlign: "center",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.1)", // 添加轻微阴影提升可读性
       }}
     >
       <div className="bubble-content">
-        <p style={{ margin: 0, wordBreak: 'break-word' }}>{content}</p>
+        <p style={{ margin: 0, wordBreak: "break-word" }}>{content}</p>
       </div>
     </motion.div>
   );

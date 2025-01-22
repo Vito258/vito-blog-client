@@ -2,7 +2,7 @@
 import "./style.scss";
 import { motion } from "framer-motion";
 import Bubble from "@/components/Bubble";
-import { calculateBubblePositions } from "@/utils/BubbleUtil";
+import { calculateBubblePositions } from "@/utils";
 
 function Home() {
   const bubbleContents = [
@@ -17,12 +17,19 @@ function Home() {
   ];
 
   const minDistance = 150; // 减小最小距离
-  const bubblePositions = calculateBubblePositions(bubbleContents.length, minDistance);
-  
+  const bubblePositions = calculateBubblePositions(
+    bubbleContents.length,
+    minDistance
+  );
+
   // 计算所有气泡位置的中心点
-  const centerX = bubblePositions.reduce((sum, pos) => sum + pos.x, 0) / bubblePositions.length;
-  const centerY = bubblePositions.reduce((sum, pos) => sum + pos.y, 0) / bubblePositions.length;
-  
+  const centerX =
+    bubblePositions.reduce((sum, pos) => sum + pos.x, 0) /
+    bubblePositions.length;
+  const centerY =
+    bubblePositions.reduce((sum, pos) => sum + pos.y, 0) /
+    bubblePositions.length;
+
   return (
     <div className="home-container">
       <motion.div
@@ -36,11 +43,11 @@ function Home() {
           top: centerY - 100,
           left: centerX - 100,
           right: centerX + 100,
-          bottom: centerY + 100
+          bottom: centerY + 100,
         }}
-        style={{ 
-          position: 'absolute',
-          transform: 'translate(-50%, -50%)'
+        style={{
+          position: "absolute",
+          transform: "translate(-50%, -50%)",
         }}
       >
         <h1>欢迎来到我的博客</h1>
@@ -51,7 +58,10 @@ function Home() {
           <Bubble
             key={index}
             content={content}
-            position={{ x: bubblePositions[index].x, y: bubblePositions[index].y }}
+            position={{
+              x: bubblePositions[index].x,
+              y: bubblePositions[index].y,
+            }}
             index={index}
           />
         ))}

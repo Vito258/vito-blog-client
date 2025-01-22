@@ -13,8 +13,11 @@ import { saveTechArticle, fetchTeacArticleTypes } from "@/api/api";
 import "./style.scss";
 import { Article, ArticleType } from "@/type";
 import ImgUrlParser from "@/components/ImgUrlParser";
+import { useNavigate } from "react-router-dom";
+import { message } from "@/utils";
 
 function ArticleEdit() {
+  const navigate = useNavigate();
   const [article, setArticle] = useState<Article>({ title: "", content: "" });
   const [articleTypeList, setArticleTypeList] = useState<ArticleType[]>([]);
 
@@ -31,9 +34,16 @@ function ArticleEdit() {
   };
 
   const handleSubmit = () => {
-    // 添加保存逻辑
+    // TODO: 添加保存逻辑
     saveTechArticle(article).then((res) => {
-      console.log(res);
+      console.log(res.code);
+      if (res.code === 0) {
+        message.success("保存成功");
+        // TODO: 根据保存文章的类型选择跳转到不同页面，目前先跳转到技术分享页面
+        navigate("/techtalk");
+      } else {
+        message.error("保存失败,请重试");
+      }
     });
   };
 
@@ -87,6 +97,9 @@ function ArticleEdit() {
               defaultValue={article.typeId}
               label="文章类型"
               placeholder="请选择文章类型"
+              onChange={(e) =>
+                setArticle({ ...article, typeId: Number(e.target.value) })
+              }
               sx={{
                 width: "200px",
               }}
