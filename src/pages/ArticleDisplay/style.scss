@@ -1,0 +1,18 @@
+.article-detail {
+  // 添加额外的自定义样式
+
+  // 代码高亮
+  pre {
+    code {
+      font-family: "Fira Code", monospace;
+    }
+  }
+
+  // 图片加载动画
+  img {
+    transition: opacity 0.3s ease;
+    &.loading {
+      opacity: 0.5;
+    }
+  }
+}

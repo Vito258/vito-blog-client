@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import * as React from "react";
 import { Suspense } from "react";
 import ArticleEdit from "@/pages/ArticleEdit";
+import ArticleDisplay from "@/pages/ArticleDisplay";
 // 懒加载组件
 const Layout = React.lazy(() => import("@/pages/Layout"));
 const About = React.lazy(() => import("@/pages/AboutMe"));
@@ -93,6 +94,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={"加载中..."}>
             <ArticleEdit />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/articleDisplay",
+        element: (
+          <Suspense fallback={"加载中..."}>
+            <ArticleDisplay />
           </Suspense>
         ),
       },

@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import "./style.scss";
+import { stripHtmlTags } from "@/utils";
 
 interface CustomCardProps {
   title: string;
@@ -18,10 +19,12 @@ const CustomCard: React.FC<CustomCardProps> = ({
   imgUrl,
   date,
 }) => {
-  // 截取content的内容
-  const shortContent = content.slice(0, 100);
+  // 确保 content 不为空，先过滤HTML标签，再截取内容
+  const plainText = stripHtmlTags(content || "");
+  const shortContent = plainText.substring(0, 100);
+
   return (
-    <Grow  in={true} timeout={500}>
+    <Grow in={true} timeout={500}>
       <Card className="custom-card">
         <CardMedia
           className="card-media"
@@ -34,7 +37,8 @@ const CustomCard: React.FC<CustomCardProps> = ({
             {title}
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {shortContent}......
+            {shortContent}
+            {plainText.length > 100 && "......"}
           </Typography>
         </CardContent>
         <div className="card-date">{date}</div>

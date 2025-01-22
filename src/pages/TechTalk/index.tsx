@@ -54,6 +54,7 @@ function TechTalk() {
           allArticles.length > 0 &&
           allArticles.map((article: Article) => (
             <CunstomCard
+              key={article.id}
               title={article.title}
               imgUrl={article.coverImageUrl || ""}
               content={article.content}
