@@ -11,6 +11,7 @@ interface CustomCardProps {
   imgUrl: string;
   content: string;
   date?: string;
+  onClick?: () => void;
 }
 
 const CustomCard: React.FC<CustomCardProps> = ({
@@ -18,6 +19,7 @@ const CustomCard: React.FC<CustomCardProps> = ({
   content,
   imgUrl,
   date,
+  onClick,
 }) => {
   // 确保 content 不为空，先过滤HTML标签，再截取内容
   const plainText = stripHtmlTags(content || "");
@@ -25,7 +27,7 @@ const CustomCard: React.FC<CustomCardProps> = ({
 
   return (
     <Grow in={true} timeout={500}>
-      <Card className="custom-card">
+      <Card className="custom-card" onClick={onClick}>
         <CardMedia
           className="card-media"
           component="img"

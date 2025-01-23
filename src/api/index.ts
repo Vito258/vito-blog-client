@@ -10,6 +10,7 @@ const apiClient = axios.create({
 });
 
 // GET 请求
+// 获取用户列表
 export const fetchUsers = async (): Promise<ReSponse> => {
   try {
     const response = await apiClient.get("/users");
@@ -20,7 +21,8 @@ export const fetchUsers = async (): Promise<ReSponse> => {
   }
 };
 
-export const fetchTeacArticleTypes = async (): Promise<ReSponse> => {
+// 获取技术文章类型列表
+export const fetchTechArticleTypes = async (): Promise<ReSponse> => {
   try {
     const response = await apiClient.get(
       "/techArticleTypes/getTechArticleTypeList"
@@ -32,7 +34,21 @@ export const fetchTeacArticleTypes = async (): Promise<ReSponse> => {
   }
 };
 
-export const fetchTeactalkAllArticles = async (): Promise<ReSponse> => {
+// 获取技术文章详情
+export const fetchTechArticleById = async (id: number): Promise<ReSponse> => {
+  try {
+    const response = await apiClient.get(
+      `/techArticles/getTechArticleById/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching article:", error);
+    throw error;
+  }
+};
+
+// 获取所有技术文章
+export const fetchAllTechtalkArticles = async (): Promise<ReSponse> => {
   try {
     const response = await apiClient.get("/techArticles/getTechArticleList");
     return response.data;
@@ -42,7 +58,8 @@ export const fetchTeactalkAllArticles = async (): Promise<ReSponse> => {
   }
 };
 
-export const fetchTeactalkArticleByType = async (
+// 获取技术文章列表
+export const fetchTechArticleByType = async (
   type: number
 ): Promise<ReSponse> => {
   try {
@@ -57,6 +74,7 @@ export const fetchTeactalkArticleByType = async (
 };
 
 // POST 请求
+// 创建用户
 export const createUser = async (userData: any): Promise<ReSponse> => {
   try {
     const response = await apiClient.post("/users", userData);
@@ -67,6 +85,7 @@ export const createUser = async (userData: any): Promise<ReSponse> => {
   }
 };
 
+// 保存技术文章
 export const saveTechArticle = async (article: Article): Promise<ReSponse> => {
   try {
     const response = await apiClient.post(

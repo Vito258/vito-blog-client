@@ -9,7 +9,7 @@ import {
   MenuItem,
   FormControl,
 } from "@mui/material";
-import { saveTechArticle, fetchTeacArticleTypes } from "@/api/api";
+import { saveTechArticle, fetchTechArticleTypes } from "@/api";
 import "./style.scss";
 import { Article, ArticleType } from "@/type";
 import ImgUrlParser from "@/components/ImgUrlParser";
@@ -22,7 +22,7 @@ function ArticleEdit() {
   const [articleTypeList, setArticleTypeList] = useState<ArticleType[]>([]);
 
   useEffect(() => {
-    fetchTeacArticleTypes().then((res) => {
+    fetchTechArticleTypes().then((res) => {
       setArticleTypeList(res.data.articleTypes);
     });
   }, []);

@@ -1,24 +1,23 @@
 import { Box, Container, Typography, styled } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./style.scss";
 import { Article } from "@/type";
 import dayjs from "dayjs";
+import { fetchTechArticleById } from "@/api";
 
 function ArticleDetail() {
-  const { id } = useParams();
+  // 获取路由参数
+  const location = useLocation();
+  const { id } = location.state || {};
+  // 文章数据
   const [article, setArticle] = useState<Article | null>(null);
 
   useEffect(() => {
-    // 这里添加获取文章详情的接口调用
+    // 添加获取文章详情的接口调用
     const fetchArticle = async () => {
-      try {
-        const response = await fetch(`/api/article/${id}`);
-        const data = await response.json();
-        setArticle(data);
-      } catch (error) {
-        console.error("Failed to fetch article:", error);
-      }
+      const response = await fetchTechArticleById(Number(id));
+      setArticle(response.data.article);
     };
 
     fetchArticle();
