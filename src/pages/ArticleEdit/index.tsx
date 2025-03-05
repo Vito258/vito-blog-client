@@ -40,7 +40,7 @@ function ArticleEdit() {
       if (res.code === 0) {
         message.success("保存成功");
         // TODO: 根据保存文章的类型选择跳转到不同页面，目前先跳转到技术分享页面
-        navigate("/techtalk");
+        navigate("/layout/techtalk");
       } else {
         message.error("保存失败,请重试");
       }

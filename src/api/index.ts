@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Article } from "@/type";
+import { Article, User } from "@/type";
 import { ReSponse } from "@/type";
 
 const apiClient = axios.create({
@@ -17,6 +17,17 @@ export const fetchUsers = async (): Promise<ReSponse> => {
     return response.data;
   } catch (error) {
     console.error("Error fetching users:", error);
+    throw error;
+  }
+};
+
+// 用户登录
+export const userLogin = async (user: User): Promise<ReSponse> => {
+  try {
+    const response = await apiClient.post(`/users/login`, user);
+    return response.data;
+  } catch (error) {
+    console.error("Error user login:", error);
     throw error;
   }
 };

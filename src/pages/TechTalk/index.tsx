@@ -66,7 +66,7 @@ function TechTalk() {
                 DateFormatType.YYYY_MM_DD
               )}
               onClick={() => {
-                navigate(`/articleDisplay`, {
+                navigate(`/layout/articleDisplay`, {
                   state: { id: article.id },
                 });
               }}

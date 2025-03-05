@@ -94,7 +94,7 @@ export default function Navigator(props: DrawerProps) {
             </ListItem>
             {children.map(({ id: childId,name, icon }) => (
               <ListItem disablePadding key={childId}>
-                <ListItemButton sx={item} onClick={() => navigate(`/${childId}`)}>
+                <ListItemButton sx={item} onClick={() => navigate(`/layout/${childId}`)}>
                   <ListItemIcon>{icon}</ListItemIcon>
                   <ListItemText>{name}</ListItemText>
                 </ListItemButton>

@@ -13,11 +13,20 @@ const Messages = React.lazy(() => import("@/pages/Messages"));
 const NotesAndChats = React.lazy(() => import("@/pages/NotesAndChats"));
 const ProjectShare = React.lazy(() => import("@/pages/ProjectShare"));
 const TechTalk = React.lazy(() => import("@/pages/TechTalk"));
+const LoginPage = React.lazy(() => import("@/pages/Login"));
 
 // 路由菜单
 const router = createBrowserRouter([
   {
     path: "/",
+    element: (
+      <Suspense fallback={"加载中..."}>
+        <LoginPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/layout",
     element: (
       <Suspense fallback={"加载中..."}>
         <Layout />
@@ -26,7 +35,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        // path:'/home',
+        // path:'/layout/home',
         element: (
           <Suspense fallback={"加载中..."}>
             <Home />
@@ -34,7 +43,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/about",
+        path: "/layout/about",
         element: (
           <Suspense fallback={"加载中..."}>
             <About />
@@ -42,7 +51,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/donations",
+        path: "/layout/donations",
         element: (
           <Suspense fallback={"加载中..."}>
             <Donations />
@@ -50,7 +59,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/chatroom",
+        path: "/layout/chatroom",
         element: (
           <Suspense fallback={"加载中..."}>
             <ChatRoom />
@@ -58,7 +67,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/messages",
+        path: "/layout/messages",
         element: (
           <Suspense fallback={"加载中..."}>
             <Messages />
@@ -66,7 +75,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/notes",
+        path: "/layout/notes",
         element: (
           <Suspense fallback={"加载中..."}>
             <NotesAndChats />
@@ -74,7 +83,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/projectshare",
+        path: "/layout/projectshare",
         element: (
           <Suspense fallback={"加载中..."}>
             <ProjectShare />
@@ -82,7 +91,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/techtalk",
+        path: "/layout/techtalk",
         element: (
           <Suspense fallback={"加载中..."}>
             <TechTalk />
@@ -90,7 +99,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/articleEdit",
+        path: "/layout/articleEdit",
         element: (
           <Suspense fallback={"加载中..."}>
             <ArticleEdit />
@@ -98,7 +107,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/articleDisplay",
+        path: "/layout/articleDisplay",
         element: (
           <Suspense fallback={"加载中..."}>
             <ArticleDisplay />

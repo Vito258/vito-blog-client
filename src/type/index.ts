@@ -5,6 +5,16 @@ export interface ReSponse {
   msg: string;
 }
 
+// 用户
+export interface User {
+  id?: number;
+  account: string;
+  password: string;
+  nickname?: string;
+  createdDate?: string;
+  updatedDate?: string;
+}
+
 // 文章
 export interface Article {
   id?: number;
