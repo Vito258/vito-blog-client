@@ -15,6 +15,7 @@ interface LoginFormProps {
   onLoginSuccess?: () => void;
 }
 
+// 登录请求
 interface LoginReq {
   account: string;
   password: string;
@@ -29,6 +30,7 @@ const LoginPage: React.FC<LoginFormProps> = () => {
   const [alertType, setAlertType] = useState<number>(0);
   const navigate = useNavigate();
 
+  // 用户登录
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     // 模拟登录验证（实际应调用API）
@@ -48,6 +50,16 @@ const LoginPage: React.FC<LoginFormProps> = () => {
     }
   };
 
+  // 游客登录
+  const handleGuestLogin = () => {
+    // 模拟游客登录
+    setUsername("guest");
+    setPassword("guest");
+    // 存储token[1](@ref)
+    localStorage.setItem("token", "guest");
+    navigate("/layout");
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -63,7 +75,9 @@ const LoginPage: React.FC<LoginFormProps> = () => {
           <Alert severity="success">登录成功</Alert>
         ) : alertType === 2 ? (
           <Alert severity="error">用户名或密码错误，请重试</Alert>
-        ) : <Box sx={{height:"50px"}}></Box>}
+        ) : (
+          <Box sx={{ height: "50px" }}></Box>
+        )}
         <Typography component="h1" variant="h5">
           登录页面
         </Typography>
@@ -95,6 +109,9 @@ const LoginPage: React.FC<LoginFormProps> = () => {
             sx={{ mt: 3, mb: 2 }}
           >
             登录
+          </Button>
+          <Button variant="outlined" fullWidth sx={{ mt: 3, mb: 2 }}>
+            游客登陆
           </Button>
         </Box>
       </Box>
